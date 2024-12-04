@@ -1,10 +1,10 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, d as renderComponent } from '../chunks/astro/server_DgGtbn0O.mjs';
+import { e as createComponent, r as renderTemplate, m as maybeRenderHead, g as addAttribute, j as renderScript, i as renderComponent } from '../chunks/astro/server_DifAk8E4.mjs';
 import 'kleur/colors';
 import 'html-escaper';
-import { $ as $$Header, a as $$Layout } from '../chunks/Header_DanrhahD.mjs';
+import { $ as $$Header, a as $$Layout } from '../chunks/Header_CKy8sZXS.mjs';
 import 'clsx';
-import { s as supabase } from '../chunks/supabase_Hh7l-WS_.mjs';
+import { s as supabase } from '../chunks/supabase_CEd67A5Z.mjs';
 /* empty css                                     */
 /* empty css                                      */
 export { renderers } from '../renderers.mjs';
@@ -27,7 +27,7 @@ No records added yet
   ) : spentItems?.map((item) => renderTemplate`<tr${addAttribute(`tr-${item.id}`, "id")} data-astro-cid-chm636uw> <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300" data-astro-cid-chm636uw> ${item.date} </td> <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300" data-astro-cid-chm636uw> ${item.category} </td> <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300" data-astro-cid-chm636uw>
 $${item.amount.toFixed(2)} </td> <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 capitalize" data-astro-cid-chm636uw> ${item.paymentType} </td>${" "} <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 capitalize" data-astro-cid-chm636uw> ${item.createdBy} </td> <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 flex space-x-2" data-astro-cid-chm636uw>  <button class="remove-btn text-blue-600 hover:text-blue-900"${addAttribute(item.id, "data-id")}${addAttribute(spentItems, "data-items")} data-astro-cid-chm636uw>
 Remove
-</button> </td> </tr>`)} </tbody> </table> </div> </div> <div id="toaster" class="toaster" data-astro-cid-chm636uw></div>  `;
+</button> </td> </tr>`)} </tbody> </table> </div> </div> <div id="toaster" class="toaster" data-astro-cid-chm636uw></div> ${renderScript($$result, "/Users/salimchemes/Desktop/code/spent-tracker/src/components/ListSpent.astro?astro&type=script&index=0&lang.ts")} `;
 }, "/Users/salimchemes/Desktop/code/spent-tracker/src/components/ListSpent.astro", void 0);
 
 const $$SpentList = createComponent(($$result, $$props, $$slots) => {

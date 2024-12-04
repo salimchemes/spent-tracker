@@ -12,7 +12,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.0.0",
     "@supabase/supabase-js": "^2.46.2",
-    "astro": "^4.16.16",
+    "astro": "^5.0.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "typescript": "^5.7.2"
