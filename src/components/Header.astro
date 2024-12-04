@@ -1,0 +1,21 @@
+---
+const currentPath = new URL(Astro.request.url).pathname;
+---
+
+<header class="flex items-center p-4">
+  <h1 class="text-xl font-bold mr-8">Spent Tracker</h1>
+  <nav class="flex space-x-4">
+    <a
+      href="/spent-list"
+      class={`py-2 px-4 border-b-2 ${currentPath === "/spent-list" ? "border-blue-600" : "border-transparent"} hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+    >
+      List
+    </a>
+    <a
+      href="/spent-add"
+      class={`py-2 px-4 border-b-2 ${currentPath === "/spent-add" ? "border-blue-600" : "border-transparent"} hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+    >
+      Add
+    </a>
+  </nav>
+</header>

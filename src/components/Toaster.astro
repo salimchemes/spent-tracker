@@ -1,0 +1,26 @@
+<div id="toaster" class="toaster"></div>
+
+<style>
+  .toaster {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .toaster.success {
+    background-color: #4caf50;
+  }
+
+  .toaster.error {
+    background-color: #f44336;
+  }
+
+  .toaster.show {
+    opacity: 1;
+  }
+</style>

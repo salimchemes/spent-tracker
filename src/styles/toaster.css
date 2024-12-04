@@ -1,0 +1,17 @@
+.toaster {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    border-radius: 4px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .toaster.show {
+    opacity: 1;
+  }
