@@ -9,7 +9,6 @@ const getTodayDate = () => {
   const day = String(today.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 };
-
 ---
 
 <form id="add-expense-form" class="max-w-md mx-auto">
@@ -61,7 +60,9 @@ const getTodayDate = () => {
       >Amount</label
     >
     <input
-      type="number"
+      type="tel"
+      inputmode="numeric"
+      pattern="[0-9]*"
       id="amount"
       name="amount"
       step="0.01"
@@ -165,7 +166,7 @@ const getTodayDate = () => {
     const formData = new FormData(event.target as HTMLFormElement);
     const created_by =
       localStorage.getItem("spentTrackerDefaultUser") || "flavia";
-    const data = {...Object.fromEntries(formData), created_by};
+    const data = { ...Object.fromEntries(formData), created_by };
     const response = await fetch("/api/expenses", {
       method: "POST",
       headers: {
@@ -178,6 +179,16 @@ const getTodayDate = () => {
       showToaster("Expense added successfully!");
       if (event.target) {
         (event.target as HTMLFormElement).reset();
+
+        // Preserve the "Created by" radio button state
+        const spentTrackerDefaultUser =
+          localStorage.getItem("spentTrackerDefaultUser") || "flavia";
+        const defaultRadio = form?.querySelector(
+          `input[name="created_by"][value="${spentTrackerDefaultUser}"]`
+        ) as HTMLInputElement;
+        if (defaultRadio) {
+          defaultRadio.checked = true; // Keep the selected radio button checked
+        }
       }
     } else {
       showToaster("Failed to add expense.", false);
