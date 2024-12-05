@@ -18,6 +18,12 @@ const spentItems = data?.map((item) => ({
 }));
 const totalAmount =
   spentItems?.reduce((acc, curr) => acc + curr.amount, 0) || 0;
+
+// Function to format date to dd/mm/yy
+function formatDate(dateString: string): string {
+  const formattedDate = dateString.split("-");
+  return `${formattedDate[2]}/${formattedDate[1]}/${formattedDate[0]}`;
+}
 ---
 
 <div
@@ -81,7 +87,7 @@ const totalAmount =
             spentItems?.map((item) => (
               <tr id={`tr-${item.id}`}>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                  {item.date}
+                  {formatDate(item.date)}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                   {item.category}
