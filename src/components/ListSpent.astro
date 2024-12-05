@@ -167,8 +167,6 @@ const totalAmount =
         if (totalElement) {
           const total = Number(totalElement.innerText) - amount;
           totalElement.innerHTML = total.toString();
-          // totalAmount -= amount; // Subtract the removed item's amount
-          // document.querySelector('h2').innerText = `Total Amount: $${totalAmount.toFixed(2)}`; // U
           showToaster("Item removed successfully");
         }
       }
