@@ -16,12 +16,18 @@ const spentItems = data?.map((item) => ({
   createdBy: item.created_by,
   notes: item.notes,
 }));
-
+const totalAmount =
+  spentItems?.reduce((acc, curr) => acc + curr.amount, 0) || 0;
 ---
 
 <div
-  class="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+  class="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
 >
+  <div class="mt-4">
+    <h2 class="text-lg font-bold text-gray-800 dark:text-gray-200">
+      Total: $<span id="total">{totalAmount.toFixed(2)}</span>
+    </h2>
+  </div>
   <div class="overflow-x-auto">
     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
       <thead class="bg-gray-50 dark:bg-gray-700">
@@ -101,6 +107,7 @@ const spentItems = data?.map((item) => ({
                   <button
                     class="remove-btn text-blue-600 hover:text-blue-900"
                     data-id={item.id}
+                    data-amount={item.amount}
                     data-items={spentItems}
                   >
                     Remove
@@ -113,6 +120,8 @@ const spentItems = data?.map((item) => ({
       </tbody>
     </table>
   </div>
+
+  <!-- Display Total Amount -->
 </div>
 <div id="toaster" class="toaster"></div>
 <script>
@@ -130,7 +139,10 @@ const spentItems = data?.map((item) => ({
   document.querySelectorAll(".remove-btn").forEach((button) => {
     button.addEventListener("click", (e) => {
       const id = (e.currentTarget as HTMLElement)?.getAttribute("data-id");
-      handleRemove(Number(id));
+      const amount = (e.currentTarget as HTMLElement)?.getAttribute(
+        "data-amount"
+      );
+      handleRemove(Number(id), Number(amount));
     });
   });
 
@@ -139,7 +151,7 @@ const spentItems = data?.map((item) => ({
     // Implement edit functionality here
   }
 
-  async function handleRemove(id: number) {
+  async function handleRemove(id: number, amount: number) {
     const response = await fetch("/api/expenses", {
       method: "DELETE",
       headers: {
@@ -151,7 +163,14 @@ const spentItems = data?.map((item) => ({
       const tr = document.getElementById(`tr-${id}`);
       if (tr) {
         tr.remove();
-        showToaster("Item removed successfully");
+        const totalElement = document.getElementById("total") as HTMLElement;
+        if (totalElement) {
+          const total = Number(totalElement.innerText) - amount;
+          totalElement.innerHTML = total.toString();
+          // totalAmount -= amount; // Subtract the removed item's amount
+          // document.querySelector('h2').innerText = `Total Amount: $${totalAmount.toFixed(2)}`; // U
+          showToaster("Item removed successfully");
+        }
       }
     } else {
       showToaster("Error removing item", false);
