@@ -5,7 +5,7 @@ import "../styles/toaster.css";
 const { data } = await supabase
   .from("expenses")
   .select("*")
-  .order("id", { ascending: false });
+  .order("date", { ascending: false });
 
 const spentItems = data?.map((item) => ({
   id: item.id,
